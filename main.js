@@ -12,55 +12,49 @@ document.getElementById("btnInput").addEventListener("click", addToCart);
 function addToCart(event) {
   event.preventDefault();
 
-  // Ambil nilai film, jumlah tiket, dan jadwal dari input
   var movie = document.getElementById("movie-input").value;
   var ticket = document.getElementById("ticketInput").value;
   var schedule = document.getElementById("schedule-input").value;
+  var totalPrice = ticket * 50000;
 
-  // Buat objek cartItem untuk menyimpan data tiket
   var cartItem = {
     movie: movie,
     ticket: ticket,
     schedule: schedule,
+    totalPrice: totalPrice,
   };
 
-  // Cek apakah ada data di local storage dengan key "cart"
   if (localStorage.getItem("cart") === null) {
-    // Jika tidak ada, buat array kosong dan tambahkan cartItem
     var cart = [];
     cart.push(cartItem);
-    // Simpan array cart ke local storage
+
     localStorage.setItem("cart", JSON.stringify(cart));
   } else {
-    // Jika sudah ada, ambil array cart dari local storage
     var cart = JSON.parse(localStorage.getItem("cart"));
-    // Tambahkan cartItem ke array cart
+
     cart.push(cartItem);
-    // Simpan array cart yang telah diperbarui ke local storage
+
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
-  // Tampilkan data yang ada di local storage ke dalam container dengan id "cart-container"
   displayCart();
 }
-// Setelah deklarasi fungsi addToCart()
+
 displayCart();
 
-// Pada saat halaman dimuat pertama kali
 window.onload = function () {
   displayCart();
 };
 function displayCart() {
   var cartContainer = document.getElementById("cart-container");
-  cartContainer.innerHTML = ""; // Kosongkan konten container
+  cartContainer.innerHTML = "";
 
-  // Cek apakah ada data di local storage dengan key "cart"
   if (localStorage.getItem("cart") !== null) {
     // Jika ada, ambil array cart dari local storage
     var cart = JSON.parse(localStorage.getItem("cart"));
 
     // Iterasi setiap item di array cart dan buat elemen untuk menampilkannya
-    cart.forEach(function (item) {
+    cart.forEach(function (item, index) {
       var cartItemDiv = document.createElement("div");
       cartItemDiv.classList.add("cart-item");
 
@@ -70,15 +64,53 @@ function displayCart() {
       var ticketQuantity = document.createElement("p");
       ticketQuantity.textContent = "Jumlah Tiket: " + item.ticket;
 
+      var totalPrice = document.createElement("p");
+      totalPrice.textContent =
+        "Total Harga: " + item.totalPrice.toLocaleString(); // Tampilkan total harga
+
       var scheduleTime = document.createElement("p");
       scheduleTime.textContent = "Jadwal: " + item.schedule;
 
+      var editButton = document.createElement("button");
+      editButton.textContent = "Edit";
+      editButton.addEventListener("click", function () {
+        editCartItem(index);
+      });
+
       cartItemDiv.appendChild(movieName);
       cartItemDiv.appendChild(ticketQuantity);
+      cartItemDiv.appendChild(totalPrice);
       cartItemDiv.appendChild(scheduleTime);
+      cartItemDiv.appendChild(editButton);
 
       cartContainer.appendChild(cartItemDiv);
     });
+  }
+}
+
+function editCartItem(index) {
+  // Ambil array cart dari local storage
+  var cart = JSON.parse(localStorage.getItem("cart"));
+
+  // Ambil data pembelian berdasarkan index
+  var cartItem = cart[index];
+
+  // Tampilkan prompt untuk mengedit jumlah tiket
+  var newTicket = prompt("Masukkan jumlah tiket:", cartItem.ticket);
+
+  // Periksa apakah pengguna memasukkan nilai baru atau membatalkan prompt
+  if (newTicket !== null) {
+    // Ubah jumlah tiket dalam data pembelian
+    cartItem.ticket = parseInt(newTicket);
+
+    // Perbarui total harga
+    cartItem.totalPrice = cartItem.ticket * 50000;
+
+    // Simpan array cart yang telah diperbarui ke local storage
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Tampilkan kembali cart dengan data yang telah diperbarui
+    displayCart();
   }
 }
 
