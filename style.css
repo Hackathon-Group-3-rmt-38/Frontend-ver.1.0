@@ -224,3 +224,14 @@ section {
   background: white;
   border-top: 6px solid black;
 }
+/* tambahan hendra V */
+#cart-container button {
+  background-color: #34974d;
+  border-radius: 12px;
+}
+#cart-container {
+  font-family: monospace;
+  margin: 80px;
+}
+/* edit disini untuk tombol edit sama container cart */
+/* cart container button sama cart container */

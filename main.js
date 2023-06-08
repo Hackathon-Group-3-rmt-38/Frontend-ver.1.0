@@ -9,6 +9,7 @@ function calculateTotal() {
   totalElement.innerHTML = "RP " + total.toLocaleString();
 }
 document.getElementById("btnInput").addEventListener("click", addToCart);
+
 function addToCart(event) {
   event.preventDefault();
 
