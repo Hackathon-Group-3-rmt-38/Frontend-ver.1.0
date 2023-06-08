@@ -1,1 +1,146 @@
+.nex .N {
+  transform: scale(1) rotate(0);
+  transition: 0.5s;
+}
 
+.N:hover {
+  transform: scale(1.2) rotate(15deg);
+}
+
+.navbar a img {
+  height: 50px;
+  width: 80px;
+}
+
+.jumbotron {
+  /* padding: 2rem 1rem; */
+  background-color: rgb(0, 35, 73);
+  padding-top: 7rem;
+  margin-top: -40px;
+}
+
+.jumbotron img {
+  height: 780px;
+}
+
+.about-me p {
+  text-align: justify;
+}
+
+#projects {
+  background-color: #f29d9d;
+}
+
+section {
+  padding-top: 6rem;
+}
+
+@media (min-width: 992px) {
+  .navbar-nav .nav-item {
+    text-transform: uppercase;
+    margin-right: 30px;
+  }
+
+  .nav-link:hover::after {
+    content: "";
+    display: block;
+    border-bottom: 3px solid rgb(219, 217, 89);
+    width: 50%;
+    margin: auto;
+    padding-bottom: 5px;
+    margin-bottom: -8px;
+  }
+}
+
+/* My Icon */
+.icon-box {
+  position: relative;
+  background-color: #dc2a2a;
+  border-radius: 10px;
+  height: 500px;
+  transform-style: preserve-3d;
+}
+
+.icon-box::before {
+  content: "MY";
+  position: absolute;
+  color: #fff;
+  font-size: 6em;
+  font-weight: bold;
+  font-style: italic;
+  top: 40px;
+  left: -5%;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.icon-box:hover::before {
+  left: 50%;
+  transform: translate(-50%, 0);
+  opacity: 0.2;
+}
+
+.icon-box::after {
+  content: "ICON";
+  position: absolute;
+  color: #fff;
+  font-size: 4em;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 10px;
+  top: 350px;
+  left: 45%;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.icon-box:hover::after {
+  left: 50%;
+  transform: translate(-50%, 0);
+  opacity: 0.2;
+}
+
+.icon-name {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  font-size: 2em;
+  letter-spacing: 10px;
+  transform: translate3d(0, 0, 50px);
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.icon-box:hover .icon-name {
+  top: 40px;
+  opacity: 1;
+}
+
+.btn-icon {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate3d(-50%, 0, 100px);
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.icon-box:hover .btn-icon {
+  bottom: 20px;
+  opacity: 0.8;
+}
+
+.icon-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -45%, 80px);
+  max-width: 450px;
+  transition: 0.5s;
+}
+
+.icon-box:hover .icon-img {
+  transform: translate3d(-50%, -47%, 80px) scale(1.1);
+}
