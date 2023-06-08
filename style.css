@@ -204,7 +204,7 @@ section {
 .button:active {
   border: 1px solid #2e8644;
 }
-
+/* tambahan hendra V */
 #cart-container button {
   background-color: #34974d;
   border-radius: 12px;
@@ -213,3 +213,5 @@ section {
   font-family: monospace;
   margin: 80px;
 }
+/* edit disini untuk tombol edit sama container cart */
+/* cart container button sama cart container */
