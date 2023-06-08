@@ -204,3 +204,12 @@ section {
 .button:active {
   border: 1px solid #2e8644;
 }
+
+#cart-container button {
+  background-color: #34974d;
+  border-radius: 12px;
+}
+#cart-container {
+  font-family: monospace;
+  margin: 80px;
+}
