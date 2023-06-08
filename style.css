@@ -20,7 +20,7 @@
 }
 
 .jumbotron img {
-  height: 780px;
+  height: 600px;
 }
 
 .about-me p {
@@ -144,3 +144,14 @@ section {
 .icon-box:hover .icon-img {
   transform: translate3d(-50%, -47%, 80px) scale(1.1);
 }
+
+.card-img-top {
+  height: 550px;
+  object-fit: cover;
+}
+
+.card-text {
+  font-style: italic;
+  font-size: 17px;
+}
+
