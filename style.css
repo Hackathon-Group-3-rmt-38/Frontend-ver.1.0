@@ -204,3 +204,23 @@ section {
 .button:active {
   border: 1px solid #2e8644;
 }
+
+/* Format Judul per Film */
+.card-text {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.card {
+  border: #808080 solid 4px;
+}
+
+#movie {
+  background: #FFFFF0;
+  padding-bottom: 70px;
+}
+
+#cart {
+  background: white;
+  border-top: 6px solid black;
+}
