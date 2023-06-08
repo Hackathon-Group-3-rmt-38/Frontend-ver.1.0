@@ -1,52 +1,90 @@
-let movie = [
-  {
-    name: "SPIDER-MAN: INTO THE SPIDER-VERSE",
-    price: "50000",
-    rate: "16",
-    schedule: ["09.00", "12.00", "15.00", "17.00", "19.00"],
-  },
-  {
-    name: "THE INCREDIBLES",
-    price: "50000",
-    rate: "16",
-    schedule: ["09.00", "12.00", "15.00", "17.00", "19.00"],
-  },
-  {
-    name: "BLACK PANTHER",
-    price: "50000",
-    rate: "16",
-    schedule: ["09.00", "12.00", "15.00", "17.00", "19.00"],
-  },
-  {
-    name: "SPIDER-MAN: ACROSS THE SPIDER-VERSE",
-    price: "50000",
-    rate: "16",
-    schedule: ["09.00", "12.00", "15.00", "17.00", "19.00"],
-  },
-  {
-    name: "AVENGERS: ENDGAME",
-    price: "50000",
-    rate: "16",
-    schedule: ["09.00", "12.00", "15.00", "17.00", "19.00"],
-  },
-  {
-    name: "LOGAN",
-    price: "50000",
-    rate: "16",
-    schedule: ["09.00", "12.00", "15.00", "17.00", "19.00"],
-  },
-];
+const ticketInput = document.getElementById("ticketInput");
+const totalElement = document.getElementById("total");
 
-let mov1 = document.querySelector("#p-mov1");
-let mov2 = document.querySelector("#p-mov2");
-let mov3 = document.querySelector("#p-mov3");
-let mov4 = document.querySelector("#p-mov4");
-let mov5 = document.querySelector("#p-mov5");
-let mov6 = document.querySelector("#p-mov6");
+ticketInput.addEventListener("input", calculateTotal);
+function calculateTotal() {
+  const ticketCount = parseInt(ticketInput.value);
+  const ticketPrice = 50000;
+  const total = ticketCount * ticketPrice;
+  totalElement.innerHTML = "RP " + total.toLocaleString();
+}
+document.getElementById("btnInput").addEventListener("click", addToCart);
+function addToCart(event) {
+  event.preventDefault();
 
-mov1.innerHTML = movie[0].name;
-mov2.innerHTML = movie[1].name;
-mov3.innerHTML = movie[2].name;
-mov4.innerHTML = movie[3].name;
-mov5.innerHTML = movie[4].name;
-mov6.innerHTML = movie[5].name;
+  // Ambil nilai film, jumlah tiket, dan jadwal dari input
+  var movie = document.getElementById("movie-input").value;
+  var ticket = document.getElementById("ticketInput").value;
+  var schedule = document.getElementById("schedule-input").value;
+
+  // Buat objek cartItem untuk menyimpan data tiket
+  var cartItem = {
+    movie: movie,
+    ticket: ticket,
+    schedule: schedule,
+  };
+
+  // Cek apakah ada data di local storage dengan key "cart"
+  if (localStorage.getItem("cart") === null) {
+    // Jika tidak ada, buat array kosong dan tambahkan cartItem
+    var cart = [];
+    cart.push(cartItem);
+    // Simpan array cart ke local storage
+    localStorage.setItem("cart", JSON.stringify(cart));
+  } else {
+    // Jika sudah ada, ambil array cart dari local storage
+    var cart = JSON.parse(localStorage.getItem("cart"));
+    // Tambahkan cartItem ke array cart
+    cart.push(cartItem);
+    // Simpan array cart yang telah diperbarui ke local storage
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  // Tampilkan data yang ada di local storage ke dalam container dengan id "cart-container"
+  displayCart();
+}
+// Setelah deklarasi fungsi addToCart()
+displayCart();
+
+// Pada saat halaman dimuat pertama kali
+window.onload = function () {
+  displayCart();
+};
+function displayCart() {
+  var cartContainer = document.getElementById("cart-container");
+  cartContainer.innerHTML = ""; // Kosongkan konten container
+
+  // Cek apakah ada data di local storage dengan key "cart"
+  if (localStorage.getItem("cart") !== null) {
+    // Jika ada, ambil array cart dari local storage
+    var cart = JSON.parse(localStorage.getItem("cart"));
+
+    // Iterasi setiap item di array cart dan buat elemen untuk menampilkannya
+    cart.forEach(function (item) {
+      var cartItemDiv = document.createElement("div");
+      cartItemDiv.classList.add("cart-item");
+
+      var movieName = document.createElement("p");
+      movieName.textContent = "Film: " + item.movie;
+
+      var ticketQuantity = document.createElement("p");
+      ticketQuantity.textContent = "Jumlah Tiket: " + item.ticket;
+
+      var scheduleTime = document.createElement("p");
+      scheduleTime.textContent = "Jadwal: " + item.schedule;
+
+      cartItemDiv.appendChild(movieName);
+      cartItemDiv.appendChild(ticketQuantity);
+      cartItemDiv.appendChild(scheduleTime);
+
+      cartContainer.appendChild(cartItemDiv);
+    });
+  }
+}
+
+let btnResett = document.querySelector("#btnReset");
+btnResett.addEventListener("click", () => {
+  // Menghapus semua item dari local storage
+  localStorage.clear();
+  location.reload();
+});
