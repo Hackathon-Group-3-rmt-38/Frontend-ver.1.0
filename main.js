@@ -60,17 +60,17 @@ function displayCart() {
       cartItemDiv.classList.add("cart-item");
 
       var movieName = document.createElement("p");
-      movieName.textContent = "Film : " + item.movie;
-      
+      movieName.textContent = "Film: " + item.movie;
+
       var ticketQuantity = document.createElement("p");
-      ticketQuantity.textContent = "Jumlah Tiket : " + item.ticket;
+      ticketQuantity.textContent = "Jumlah Tiket: " + item.ticket;
 
       var totalPrice = document.createElement("p");
       totalPrice.textContent =
-        "Total Harga : " + item.totalPrice.toLocaleString(); // Tampilkan total harga
+        "Total Harga: " + item.totalPrice.toLocaleString(); // Tampilkan total harga
 
       var scheduleTime = document.createElement("p");
-      scheduleTime.textContent = "Jadwal : " + item.schedule;
+      scheduleTime.textContent = "Jadwal: " + item.schedule;
 
       var editButton = document.createElement("button");
       editButton.textContent = "Edit";
