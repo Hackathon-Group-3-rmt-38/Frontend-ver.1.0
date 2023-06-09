@@ -204,28 +204,6 @@ section {
 .button:active {
   border: 1px solid #2e8644;
 }
-/* tambahan hendra V */
-#cart-container button {
-  background-color: #34974d;
-  border-radius: 12px;
-}
-#cart-container {
-  font-family: monospace;
-  margin: 80px;
-}
-/* edit disini untuk tombol edit sama container cart */
-/* cart container button sama cart container */
-
-.cart-item {
-  background: #FFFFF0;
-  border: #957C3D solid 4px;
-  border-radius: 12px;
-  padding: 10px;
-  margin: 10px;
-  width: 50%;
-  font-size: 18px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
 
 /* Format Judul per Film */
 .card-text {
@@ -245,4 +223,29 @@ section {
 #cart {
   background: white;
   border-top: 6px solid black;
+}
+/* tambahan hendra V */
+#cart-container button {
+  background-color: #808080;
+  border-radius: 12px;
+  border-color: black;
+  color: white;
+  font-size: 18px;
+}
+#cart-container {
+  font-family: monospace;
+  margin: 80px;
+}
+/* edit disini untuk tombol edit sama container cart */
+/* cart container button sama cart container */
+
+.cart-item {
+  background: #FFFFF0;
+  border: #957C3D solid 4px;
+  border-radius: 12px;
+  padding: 10px;
+  margin: 10px;
+  width: 50%;
+  font-size: 18px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
