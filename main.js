@@ -6,7 +6,7 @@ function calculateTotal() {
   const ticketCount = parseInt(ticketInput.value);
   const ticketPrice = 50000;
   const total = ticketCount * ticketPrice;
-  totalElement.innerHTML = "RP " + total.toLocaleString();
+  totalElement.innerHTML = "Rp " + total.toLocaleString();
 }
 document.getElementById("btnInput").addEventListener("click", addToCart);
 
@@ -120,4 +120,27 @@ btnResett.addEventListener("click", () => {
   // Menghapus semua item dari local storage
   localStorage.clear();
   location.reload();
+});
+
+var scheduleDropdown = document.getElementById("schedule-input");
+
+var defaultOption = document.createElement("option");
+defaultOption.selected = true;
+defaultOption.disabled = true;
+defaultOption.text = "Pilih jadwal film";
+
+scheduleDropdown.add(defaultOption);
+
+// Menambahkan opsi jadwal film
+var scheduleOptions = [
+  { value: "10:00", text: "10:00" },
+  { value: "14:00", text: "14:00" },
+  { value: "18:00", text: "18:00" }
+];
+
+scheduleOptions.forEach(function(option) {
+  var scheduleOption = document.createElement("option");
+  scheduleOption.value = option.value;
+  scheduleOption.text = option.text;
+  // scheduleDropdown.add(scheduleOption);
 });

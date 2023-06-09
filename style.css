@@ -208,7 +208,9 @@ section {
 /* Format Judul per Film */
 .card-text {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 17px;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .card {
@@ -248,4 +250,14 @@ section {
   width: 50%;
   font-size: 18px;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.card-img-top {
+  height: 610px; /* Ubah nilai ini sesuai kebutuhan Anda */
+  object-fit: cover;
+}
+
+.figure-captionX {
+  font-style: italic;
+  font-size: larger;
 }

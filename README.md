@@ -1,4 +1,4 @@
-#ver.1.0-release
+# Frontend-ver.1.0
 
 NOTE :
 - Push origin secara terpisah ( Gunakan branch masing-masing. Jangan branch main / master )
