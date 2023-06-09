@@ -215,3 +215,15 @@ section {
 }
 /* edit disini untuk tombol edit sama container cart */
 /* cart container button sama cart container */
+
+.cart-item {
+  background: #FFFFF0;
+  border: #957C3D solid 4px;
+  border-radius: 12px;
+  padding: 10px;
+  margin: 10px;
+  width: 50%;
+  font-size: 18px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
